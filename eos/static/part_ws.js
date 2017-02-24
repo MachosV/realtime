@@ -7,7 +7,9 @@ $( document ).ready(function() {
         var li = document.createElement("li");
         li.appendChild(document.createTextNode(e.data));
         ul.appendChild(li);
-
+        $(li).addClass('animated fadeInLeftBig').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function() {
+          $(this).removeClass('animated fadeInLeftBig');
+        });
     }
 });
 
