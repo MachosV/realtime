@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist list</title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="{% static 'part_ws.js' %}"></script>
+{% if artists %}
+    <ul id="artist_list">
+    {% for artist in artists %}
+        <li>{{artist.name}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>
