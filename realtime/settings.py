@@ -43,11 +43,21 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+#CHANNEL_LAYERS = {
+ #   "default":{
+  #      "BACKEND":"asgiref.inmemory.ChannelLayer",
+   #     "ROUTING":"realtime.routing.channel_routing",
+    #}
+#}
+
 CHANNEL_LAYERS = {
-    "default":{
-        "BACKEND":"asgiref.inmemory.ChannelLayer",
-        "ROUTING":"realtime.routing.channel_routing",
-    }
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+        "ROUTING": "realtime.routing.channel_routing",
+    },
 }
 
 MIDDLEWARE = [

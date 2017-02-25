@@ -6,7 +6,20 @@ from rest_framework.response import Response
 from eos.models import Artist
 from .serializers import ArtistSerializer
 import json
+from rest_framework.views import APIView
 
+class ArtistListWeb(APIView):
+    def get(self,request):
+        artists = Artist.objects.all()
+        serializer = ArtistSerializer(artists, many = True)
+        return Response(serializer.data)
+
+    def post(self,request):
+        serializer = ArtistSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JSONResponse("", status=status.HTTP_201_CREATED)
+        return JSONResponse("", status=status.HTTP_400_BAD_REQUEST)
 
 class JSONResponse(HttpResponse):
     def __init__(self, data, **kwargs):
@@ -25,5 +38,5 @@ def artist_list(request):
         serializer = ArtistSerializer(data = data_dictionary)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse(serializer.data, status = status.HTTP_201_CREATED)
-        return JSONResponse(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+            return JSONResponse("", status = status.HTTP_201_CREATED)
+        return JSONResponse("", status = status.HTTP_400_BAD_REQUEST)
