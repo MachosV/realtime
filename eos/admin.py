@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import Artist
+#from eos.models import *
 # Register your models here.
+from django.apps import apps
+from django.contrib.admin.sites import AlreadyRegistered
 
-admin.site.register(Artist)
+app_models = apps.get_app_config('eos').get_models()
+for model in app_models:
+    try:
+        admin.site.register(model)
+    except AlreadyRegistered:
+        pass
+#admin.site.register(Artist)

@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from api import views
+from api.views import *
 
 urlpatterns = [
-    url(r'artists_web',views.ArtistListWeb.as_view()),
-    url(r'artists',views.artist_list),
+    url(r'artists_web',ArtistListWeb.as_view()),
+    url(r'artists',ArtistList),
 ]
