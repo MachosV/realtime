@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
     'eos',
+    'api',
+    'rest_framework',
 ]
 
 CHANNEL_LAYERS = {
