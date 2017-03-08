@@ -4,6 +4,6 @@ from api.views import *
 urlpatterns = [
     url(r'artists_web',ArtistListWeb.as_view()),
     url(r'artists',ArtistList),
-    url(r'modrei_web',ModreiListWeb.as_view()),
-    url(r'modrei',ModreiList),
+    url(r'phones_web',PhoneListWeb.as_view()),
+    url(r'phones',PhoneList),
 ]
