@@ -11,5 +11,5 @@ def unsubscribeArtists(message):
 
 def notifyNewArtist(newArtist):
     Group("artists").send({
-        "text":newArtist.name
+        "text":newArtist.name+" "+newArtist.band
     })

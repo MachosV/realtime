@@ -9,12 +9,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="{% static 'part_ws.js' %}"></script>
-{% if artists %}
     <ul id="artist_list">
-    {% for artist in artists %}
-        <li>{{artist.name}}</li>
-    {% endfor %}
+        {% if artists %}
+            {% for artist in artists %}
+                <li>{{artist}}</li>
+            {% endfor %}
+        {% endif %}
     </ul>
-{% endif %}
 </body>
 </html>

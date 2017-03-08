@@ -15,7 +15,7 @@ class ArtistListWeb(APIView):
         return Response(serializer.data)
 
     def post(self,request):
-        serializer = ArtistSerializer(data = request.data)
+        serializer = ArtistSerializer(data = request.data, partial = True)
         if serializer.is_valid():
             serializer.save()
             return JSONResponse("", status=status.HTTP_201_CREATED)
@@ -27,7 +27,7 @@ class JSONResponse(HttpResponse):
         kwargs['content_type'] = 'application/json'
         super(JSONResponse, self).__init__(content, **kwargs)
 
-@csrf_exempt
+#@csrf_exempt
 def ArtistList(request):
     if request.method == 'GET':
         artists = Artist.objects.all()
@@ -35,7 +35,7 @@ def ArtistList(request):
         return JSONResponse(serializer.data)
     elif request.method == 'POST':
         data_dictionary = json.loads(request._stream.getvalue())
-        serializer = ArtistSerializer(data = data_dictionary)
+        serializer = ArtistSerializer(data = data_dictionary, partial = True)
         if serializer.is_valid():
             serializer.save()
             return JSONResponse("", status = status.HTTP_201_CREATED)
