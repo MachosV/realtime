@@ -1,9 +1,9 @@
 from ArtistList import ArtistListWeb
 from ArtistList import ArtistList
-from ModreiList import ModreiList
-from ModreiList import ModreiListWeb
+from PhoneList import PhoneList
+from PhoneList import PhoneListWeb
 
 all = [
     'ArtistListWeb','ArtistList',
-    'ModreiListWeb','ModreiList',
+    'PhoneListWeb','PhoneList',
        ]
