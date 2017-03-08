@@ -9,7 +9,12 @@ def subscribeArtists(message):
 def unsubscribeArtists(message):
     Group("artists").discard(message.reply_channel)
 
+def updateArtist(newData):
+    Group("artists").send({
+        "text":"update"+" "+newData
+    })
+
 def notifyNewArtist(newArtist):
     Group("artists").send({
-        "text":newArtist.name+" "+newArtist.band
+        "text":newArtist.get_self()
     })

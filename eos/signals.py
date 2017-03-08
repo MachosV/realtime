@@ -5,5 +5,6 @@ from .consumers import notifyNewArtist
 
 @receiver(pre_save, sender = Artist)
 def new_artist(sender, instance, **kwargs):
-    notifyNewArtist(instance)
+    if instance._state.adding:
+        notifyNewArtist(instance)
 

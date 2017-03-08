@@ -1,5 +1,3 @@
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework import status
 from rest_framework.response import Response
@@ -8,7 +6,10 @@ from api.serializers import ArtistSerializer
 import json
 from rest_framework.views import APIView
 
-class ArtistListWeb(APIView):
+class ArtistList(APIView):
+
+    #renderer_classes = (JSONRenderer,)
+
     def get(self,request):
         artists = Artist.objects.all()
         serializer = ArtistSerializer(artists, many = True)
@@ -18,25 +19,5 @@ class ArtistListWeb(APIView):
         serializer = ArtistSerializer(data = request.data, partial = True)
         if serializer.is_valid():
             serializer.save()
-            return JSONResponse("", status=status.HTTP_201_CREATED)
-        return JSONResponse("", status=status.HTTP_400_BAD_REQUEST)
-
-class JSONResponse(HttpResponse):
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
-
-#@csrf_exempt
-def ArtistList(request):
-    if request.method == 'GET':
-        artists = Artist.objects.all()
-        serializer = ArtistSerializer(artists, many = True)
-        return JSONResponse(serializer.data)
-    elif request.method == 'POST':
-        data_dictionary = json.loads(request._stream.getvalue())
-        serializer = ArtistSerializer(data = data_dictionary, partial = True)
-        if serializer.is_valid():
-            serializer.save()
-            return JSONResponse("", status = status.HTTP_201_CREATED)
-        return JSONResponse("", status = status.HTTP_400_BAD_REQUEST)
+            return Response("", status=status.HTTP_201_CREATED)
+        return Response("", status=status.HTTP_400_BAD_REQUEST)

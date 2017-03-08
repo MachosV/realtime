@@ -12,7 +12,11 @@
     <ul id="artist_list">
         {% if artists %}
             {% for artist in artists %}
-                <li>{{artist}}</li>
+                <li id="{{artist.name}}">
+                    {% for field,value in artist.get_fields%}
+                    <span id="{{field}}">{{value}}</span>
+                    {% endfor %}
+                </li>
             {% endfor %}
         {% endif %}
     </ul>
