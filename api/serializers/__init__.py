@@ -1,7 +1,7 @@
 from ArtistSerializer import ArtistSerializer
-from ModreiSerializer import ModreiSerializer
+from PhoneSerializer import PhoneSerializer
 
 all = [
     'ArtistSerializer',
-    'ModreiSerializer',
+    'PhoneSerializer',
 ]
