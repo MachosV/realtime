@@ -1,7 +1,7 @@
 from Artist import Artist
-from Modrei import Modrei
+from Phone import Phone
 
 all = [
     'Artist',
-    'Modrei',
+    'Phone',
     ]

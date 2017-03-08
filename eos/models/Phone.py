@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-class Modrei(models.Model):
+class Phone(models.Model):
     imsi = models.CharField(max_length = 16, primary_key = True)
     cipher_ind = models.BooleanField()
     kc = models.CharField()
