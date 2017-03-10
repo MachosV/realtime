@@ -1,20 +1,21 @@
 from channels import Group
 
-def subscribeArtists(message):
-    Group("artists").add(message.reply_channel)
+def subscribePhones(message):
+    print "subscribed on phones"
+    Group("phones").add(message.reply_channel)
     message.reply_channel.send({
         "accept": True, #needed for successful handshake
     })
 
-def unsubscribeArtists(message):
-    Group("artists").discard(message.reply_channel)
+def unsubscribePhones(message):
+    Group("phones").discard(message.reply_channel)
 
-def updateArtist(newData):
-    Group("artists").send({
+def updatePhone(newData):
+    Group("phones").send({
         "text":"update"+" "+newData
     })
 
-def notifyNewArtist(newArtist):
-    Group("artists").send({
-        "text":newArtist.get_self()
+def notifyNewPhone(newPhone):
+    Group("phones").send({
+        "text":newPhone.get_self()
     })

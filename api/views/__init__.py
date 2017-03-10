@@ -1,9 +1,6 @@
-from ArtistList import ArtistList
 from PhoneList import PhoneList
-from PhoneList import PhoneListWeb
-from ArtistUpdate import ArtistUpdate
+from PhoneUpdate import PhoneUpdate
 
 all = [
-    'ArtistList','ArtistUpdate'
-    'PhoneListWeb','PhoneList',
+    'PhoneList','PhoneUpdate',
        ]

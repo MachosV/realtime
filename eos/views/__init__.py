@@ -1,7 +1,7 @@
 from Dashboard import Dashboard
-from ArtistList import ArtistList
+from PhoneList import PhoneList
 
 all = [
     'Dashboard',
-    'ArtistList'
+    'PhoneList',
     ]

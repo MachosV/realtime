@@ -1,12 +1,11 @@
 from channels.routing import route,include
-from eos.consumers import subscribeArtists,unsubscribeArtists
-
+from eos.consumers import subscribePhones,unsubscribePhones
 
 part_routing = [
-    route("websocket.connect", subscribeArtists),
-    route("websocket.disconnect", unsubscribeArtists),
+    route("websocket.connect", subscribePhones),
+    route("websocket.disconnect", unsubscribePhones),
 ]
 
 channel_routing = [
-    include(part_routing, path =r"^/artist_sub/")
+    include(part_routing, path =r"^/phone_sub/")
 ]
