@@ -10,6 +10,9 @@ def unsubscribeSinglePhone(message):
     Group(message.content['path'].split("phone_update/")[1][:-1]).discard(message.reply_channel)
 
 def updatePhone(newData):
-    Group(newData['imsi']).send({
-        "text":json.dumps(newData)
-    })
+    try:
+        Group(newData['imsi']).send({
+            "text":json.dumps(newData)
+        })
+    except:
+        pass

@@ -4,8 +4,9 @@ from rest_framework.generics import UpdateAPIView
 from django.shortcuts import get_object_or_404
 import json
 from django.http import HttpResponse
-from eos.consumers import updatePhone
 from rest_framework.renderers import JSONRenderer
+from utils.CreateLog import createLog
+from eos.consumers import updatePhone
 
 class PhoneUpdate(UpdateAPIView):
     queryset = Phone.objects.all()
@@ -18,8 +19,8 @@ class PhoneUpdate(UpdateAPIView):
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
+        createLog(request.data)
         updatePhone(request.data)
-        #create log
         return HttpResponse("Ok",status=200)
 
     def get_object(self):

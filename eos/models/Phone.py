@@ -4,14 +4,7 @@ from django.db import models
 import json
 
 class Phone(models.Model):
-    #status_choices = (
-     #   ('0','Not Registered'),
-      #  ('1','Registered Home'),
-       # ('2','Not Registered, Searching'),
-        #('3','Denied'),
-        #('4','Unknown'),
-        #('5','Registered Roaming'),
-    #)
+
     imsi = models.CharField(max_length=16, primary_key=True)
     operator = models.CharField(max_length = 20)
     signal_q = models.PositiveSmallIntegerField()
@@ -35,7 +28,6 @@ class Phone(models.Model):
 
     def get_self(self):
         return json.dumps({"imsi":self.imsi})
-
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Phone._meta.fields]
