@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %} Phone detail {% endblock %}
+{% block content %}
+<script src="{% static 'phone_detail_update.js' %}"></script>
+    {% for field,value in phone.get_fields %}
+    <span>{{field}}:</span>
+    <span id = {{field}}> {{value}}</span><br>
+    {% endfor %}
+{% endblock %}

@@ -3,21 +3,14 @@ var socket;
 $( document ).ready(function() {
     socket = new WebSocket(ws_scheme + '://' + window.location.host + "/phone_sub/");
     socket.onmessage = function(e){
-        if(e.data.split(" ")[0] == "update"){
-            response = e.data.slice(7)
-            response = JSON.parse(response)
-            obj = document.getElementById(response.imsi)
-            delete response.imsi
-            for (var key in response) {
-                if (response.hasOwnProperty(key)) {
-                    obj.children[key].innerHTML = response[key];
-                }
-            }
-            return false;
-        }
         var ul = document.getElementById("phone_list");
         var li = document.createElement("li");
-        li.appendChild(document.createTextNode(e.data));
+        var a = document.createElement("a");
+        response = JSON.parse(e.data);
+        li.id = response.imsi;
+        a.href = "phone/"+response.imsi;
+        a.innerText = response.imsi;
+        li.appendChild(a);
         ul.appendChild(li);
         $(li).addClass('animated fadeInLeftBig').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function() {
           $(this).removeClass('animated fadeInLeftBig');

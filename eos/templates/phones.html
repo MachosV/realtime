@@ -1,24 +1,16 @@
+{% extends "base.html" %}
+{% block title%}Phone list {% endblock %}
+
+{% block content %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Phone list</title>
-</head>
-<body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="{% static 'phone_ws.js' %}"></script>
-    <ul id="phone_list">
+<ul id="phone_list">
         {% if phones %}
             {% for phone in phones %}
                 <li id="{{phone.imsi}}">
-                    {% for field,value in phone.get_fields%}
-                    <span id="{{field}}">{{value}}</span>
-                    {% endfor %}
+                    <a href="phone/{{phone.imsi}}/">{{phone.imsi}}</a>
                 </li>
             {% endfor %}
         {% endif %}
-    </ul>
-</body>
-</html>
+</ul>
+{% endblock %}

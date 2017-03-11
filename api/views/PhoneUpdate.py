@@ -18,7 +18,7 @@ class PhoneUpdate(UpdateAPIView):
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
-        updatePhone(json.dumps(request.data))
+        updatePhone(request.data)
         #create log
         return HttpResponse("Ok",status=200)
 
