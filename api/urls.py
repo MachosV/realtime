@@ -4,4 +4,5 @@ from api.views import *
 urlpatterns = [
     url(r'phones',PhoneList.as_view()),
     url(r'phone_update',PhoneUpdate.as_view()),
+    url(r'phone_create',PhoneCreate.as_view()),
 ]
