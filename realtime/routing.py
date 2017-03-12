@@ -9,15 +9,16 @@ phone_list_routing = [
 phone_update_routing = [
     route("websocket.connect", subscribeSinglePhone),
     route("websocket.disconnect", unsubscribePhones),
+    route("websocket.receive",sendCommand),
 ]
 
-test_routing = [
-    route("websocket.connect",testOk),
-    route("websocket.disconnect",testDc),
+phone_status_routing = [
+    route("websocket.connect",phoneConnected),
+    route("websocket.disconnect",phoneDisconnected),
 ]
 
 channel_routing = [
     include(phone_list_routing, path = r"^/phone_sub/"),
     include(phone_update_routing, path = r'^/phone_update/' ),
-    include(test_routing, path = r'/test/'),
+    include(phone_status_routing, path = r'^/livephone/'),
 ]
