@@ -10,6 +10,16 @@ $( document ).ready(function() {
     }
 });
 
+$(document).ready(sendCommand);
+
 $(window).on("unload", function(e) {
     socket.close();
 });
+
+function sendCommand(){
+    $("#commandBtn").click( function(){
+        txtbox = document.getElementById("command");
+        socket.send(txtbox.value);
+        txtbox.value = "";
+    });
+}
