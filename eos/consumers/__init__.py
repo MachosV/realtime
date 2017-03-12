@@ -1,8 +1,8 @@
 from PhoneListCons import unsubscribePhones,subscribePhones,notifyNewPhone
 from PhoneUpdateCons import subscribeSinglePhone,unsubscribeSinglePhone,updatePhone
-from TestCons import testOk,testDc
+from PhoneStatus import phoneConnected,phoneDisconnected,sendCommand
 all = [
     'unsubscribePhones','subscribePhones','notifyNewPhone',
     'subscribeSinglePhone','unsubscribeSinglePhone','updatePhone',
-    'testOk','testDc',
+    'phoneConnected','phoneDisconnected','sendCommand'
 ]
