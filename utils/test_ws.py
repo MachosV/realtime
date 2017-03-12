@@ -1,7 +1,7 @@
 from websocket import create_connection
-ws = create_connection("ws://localhost:8000/test/")
-ws.send("Hello, World")
+imsi = "imsi1"
+ws = create_connection("ws://localhost:8000/livephone/"+imsi)
 while True:
     result =  ws.recv()
-    print "Received '%s'" % result
+    print result #works
 ws.close()
