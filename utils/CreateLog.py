@@ -3,10 +3,7 @@ import datetime
 
 def createLog(data):
     imsi = data['imsi']
-    try:
-        timestamp = data['timestamp']
-    except:
-        timestamp = str(datetime.datetime.now())
+    timestamp = data.get('timestamp',datetime.datetime.now())
     data.pop('imsi', None)
     data.pop('timestamp', None)
     for key,value in data.iteritems():
