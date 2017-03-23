@@ -30,6 +30,7 @@ class Phone(models.Model):
         return self.imsi
 
     def get_self(self):
+        #comment for master branch
         return json.dumps({"imsi":self.imsi})
 
     def get_fields(self):
