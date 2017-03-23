@@ -30,8 +30,9 @@ class Phone(models.Model):
         return self.imsi
 
     def get_self(self):
+        #thats another comment test for branch
         return json.dumps({"imsi":self.imsi})
 
     def get_fields(self):
-        #comment for branch testing
+        #thats a comment from branch testing
         return [(field.name, field.value_to_string(self)) for field in Phone._meta.fields]
