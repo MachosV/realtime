@@ -4,6 +4,9 @@
 {% block content %}
 {% load staticfiles %}
 <script src="{% static 'phone_ws.js' %}"></script>
+{% if not phones %}
+<p id="no_phones">No phones in database</p>
+{% endif %}
 <ul id="phone_list">
         {% if phones %}
             {% for phone in phones %}
@@ -11,6 +14,7 @@
                     <a href="phone/{{phone.imsi}}/">{{phone.imsi}}</a>
                 </li>
             {% endfor %}
+        {% else %}
         {% endif %}
 </ul>
 {% endblock %}

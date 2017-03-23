@@ -15,4 +15,4 @@ def updatePhone(newData):
             "text":json.dumps(newData)
         })
     except:
-        pass
+        print "sumfink gouent ronk"
