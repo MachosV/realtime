@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 
 class PhoneList(APIView):
 
-    #renderer_classes = (JSONRenderer,)
+    renderer_classes = (JSONRenderer,)
 
     def get(self,request):
         phones = Phone.objects.all()

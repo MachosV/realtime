@@ -11,7 +11,7 @@ from eos.consumers import updatePhone
 class PhoneUpdate(UpdateAPIView):
     queryset = Phone.objects.all()
     serializer_class = PhoneSerializer
-    #renderer_classes = (JSONRenderer,)
+    renderer_classes = (JSONRenderer,)
 
     def update(self, request, *args, **kwargs):
         partial = kwargs.pop('partial', True)
