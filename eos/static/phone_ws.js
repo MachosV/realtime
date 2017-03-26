@@ -3,7 +3,8 @@ var socket;
 $( document ).ready(function() {
     socket = new WebSocket(ws_scheme + '://' + window.location.host + "/phone_sub/");
     socket.onmessage = function(e){
-        document.getElementById("no_phones").remove();
+        try{document.getElementById("no_phones").remove();}
+        catch(err){}
         var ul = document.getElementById("phone_list");
         var li = document.createElement("li");
         var a = document.createElement("a");

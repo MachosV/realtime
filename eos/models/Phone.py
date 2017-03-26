@@ -19,7 +19,7 @@ class Phone(models.Model):
     lai = models.CharField(max_length = 12, blank = True, null = True)
     ptmsi = models.CharField(max_length = 8, blank = True, null = True)
     ptmsi_sign = models.CharField(max_length = 6, blank = True, null = True)
-    rai = models.CharField(max_length = 10, blank = True, null = True)
+    rai = models.CharField(max_length = 12, blank = True, null = True)
     threshold = models.PositiveIntegerField(blank = True, null = True)
     phone_vendor = models.CharField(blank = True, max_length = 30, null = True)
     phone_model = models.CharField(blank = True, max_length = 10, null = True)

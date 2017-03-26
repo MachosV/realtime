@@ -3,10 +3,22 @@
 {% block title %} Phone detail {% endblock %}
 {% block content %}
 <script src="{% static 'phone_detail_update.js' %}"></script>
+{% if not phone %}
+<p>no phone</p>
+{% endif %}
     {% for field,value in phone.get_fields %}
     <span>{{field}}:</span>
     <span id = {{field}}> {{value}}</span><br>
     {% endfor %}
 <input type="text" id="command">
 <button type="button" id="commandBtn">Send</button>
+{% if logs %}
+<p>Logs</p>
+<ul>
+    {% for log in logs %}
+        <li>{{log.field}} - {{log.value}} @ {{log.timestamp}}</li>
+    {% endfor %}
+
+{% endif %}
+</ul>
 {% endblock %}

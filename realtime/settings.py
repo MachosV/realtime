@@ -60,6 +60,9 @@ CHANNEL_LAYERS = {
     #},
 #}
 
+
+TIME_ZONE = 'Europe/Athens'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
