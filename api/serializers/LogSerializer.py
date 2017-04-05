@@ -6,6 +6,4 @@ class LogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Log
         fields = ('field','value','timestamp')
-        #fields = '__all__'
-
 
