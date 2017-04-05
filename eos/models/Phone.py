@@ -23,7 +23,7 @@ class Phone(models.Model):
     threshold = models.PositiveIntegerField(blank = True, null = True)
     phone_vendor = models.CharField(blank = True, max_length = 30, null = True)
     phone_model = models.CharField(blank = True, max_length = 10, null = True)
-    firmware_version = models.CharField(blank = True, max_length =10, null = True)
+    firmware_version = models.CharField(blank = True, max_length =50, null = True)
     imei = models.CharField(blank = True, max_length = 17, null = True)
 
     def __str__(self):
