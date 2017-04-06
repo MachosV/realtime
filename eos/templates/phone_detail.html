@@ -3,14 +3,12 @@
 {% block title %} Phone detail {% endblock %}
 {% block content %}
 <script src="{% static 'phone_detail_update.js' %}"></script>
-{% if not phone %}
-<p>no phone</p>
-{% endif %}
-    {% for field,value in phone.get_fields %}
+{% for field,value in phone.get_fields %}
     <span>{{field}}:</span>
     <span id = {{field}}> {{value}}</span><br>
-    {% endfor %}
+{% endfor %}
 <input type="text" id="command">
 <button type="button" id="commandBtn">Send</button>
-
+<span>Command result:</span>
+<span id="cmd-result"></span>
 {% endblock %}

@@ -9,12 +9,13 @@ phone_list_routing = [
 phone_update_routing = [
     route("websocket.connect", subscribeSinglePhone),
     route("websocket.disconnect", unsubscribePhones),
-    route("websocket.receive",sendCommand),
+    route("websocket.receive",sendCommandToRPI),
 ]
 
 phone_status_routing = [
     route("websocket.connect",phoneConnected),
     route("websocket.disconnect",phoneDisconnected),
+    route("websocket.receive",sendCommandToWeb)
 ]
 
 channel_routing = [

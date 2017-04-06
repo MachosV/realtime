@@ -11,6 +11,7 @@ def unsubscribeSinglePhone(message):
 
 def updatePhone(newData):
     try:
+        print newData['imsi'] #updating to group with name imsi
         Group(newData['imsi']).send({
             "text":json.dumps(newData)
         })

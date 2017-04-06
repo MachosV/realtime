@@ -1,4 +1,5 @@
 from channels import Group
+import json
 
 def phoneConnected(message):
     message.reply_channel.send({"accept": True})
@@ -10,8 +11,18 @@ def phoneDisconnected(message):
     Group(phoneId).discard(message.reply_channel)
     #inform UI that phone disconnected
 
-def sendCommand(message):
-    phoneId = message.content['path'].replace("/", "").replace("phone_update","livephone")
+def sendCommandToRPI(message):
+    phoneId = message.content['path'].replace("/", "").replace("phone_update", "livephone")
     Group(phoneId).send({
         "text": message.content['text']
+    })
+
+def sendCommandToWeb(message):
+    data = {}
+    data['command'] = True
+    data['text'] = message.content['text']
+    id = message.content['path'].split("/")[2]
+    data = json.dumps(data)
+    Group(id).send({
+        "text": data
     })

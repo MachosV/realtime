@@ -4,9 +4,16 @@ $( document ).ready(function() {
     socket = new WebSocket(ws_scheme + '://' + window.location.host + "/phone_update/"+window.location.href.split('phone/')[1]);
     socket.onmessage = function(e){
         response = JSON.parse(e.data);
-        for (var key in response) {
-            document.getElementById(key).innerText = response[key];
+        if(response.hasOwnProperty("command")){ //check if data received is command result
+            //if yes, display result, else update values
+            document.getElementById("cmd-result").innerText = response.text;
         }
+        else{
+            for (var key in response) {
+                document.getElementById(key).innerText = response[key];
+            }
+        }
+
     }
 });
 
