@@ -12,13 +12,5 @@
     {% endfor %}
 <input type="text" id="command">
 <button type="button" id="commandBtn">Send</button>
-{% if logs %}
-<p>Logs</p>
-<ul>
-    {% for log in logs %}
-        <li>{{log.field}} - {{log.value}} @ {{log.timestamp}}</li>
-    {% endfor %}
 
-{% endif %}
-</ul>
 {% endblock %}
