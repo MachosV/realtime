@@ -6,4 +6,4 @@ from rest_framework.renderers import JSONRenderer
 class PhoneCreate(CreateAPIView):
     queryset = Phone.objects.all()
     serializer_class = PhoneSerializer
-    renderer_classes = (JSONRenderer,)
+    #renderer_classes = (JSONRenderer,)

@@ -18,7 +18,7 @@ phone_status_routing = [
 ]
 
 channel_routing = [
-    include(phone_list_routing, path = r"^/phone_sub/"),
-    include(phone_update_routing, path = r'^/phone_update/' ),
-    include(phone_status_routing, path = r'^/livephone/'),
+    include(phone_list_routing, path = r"^/ws/phone_sub/"),
+    include(phone_update_routing, path = r'^/ws/phone_update/' ),
+    include(phone_status_routing, path = r'^/ws/livephone/'),
 ]

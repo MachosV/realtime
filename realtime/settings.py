@@ -25,7 +25,7 @@ SECRET_KEY = '(j_w+v+3y!n7$p^p#4$mm1_b@8@cthh83a7a%yf=j6yz8ls(^c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,25 +43,33 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
+#CHANNEL_LAYERS = {
+ #   "default":{
+  #      "BACKEND":"asgiref.inmemory.ChannelLayer",
+   #     "ROUTING":"realtime.routing.channel_routing",
+    #}
+#}
+
 CHANNEL_LAYERS = {
-    "default":{
-        "BACKEND":"asgiref.inmemory.ChannelLayer",
-        "ROUTING":"realtime.routing.channel_routing",
-    }
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+        "ROUTING": "realtime.routing.channel_routing",
+    },
 }
 
 #CHANNEL_LAYERS = {
  #   "default": {
-  #      "BACKEND": "asgi_redis.RedisChannelLayer",
-   #     "CONFIG": {
-    #        "hosts": [("localhost", 6379)],
-     #   },
-      #  "ROUTING": "realtime.routing.channel_routing",
+  #      "BACKEND": "asgi_ipc.IPCChannelLayer",
+   #     "ROUTING": "realtime.routing.channel_routing",
+    #    "CONFIG": {
+     #       "prefix": "usimmonitor",
+      #  },
     #},
 #}
 
-
-TIME_ZONE = 'Europe/Athens'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,16 +139,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Athens'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+#USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR + '/static/'
