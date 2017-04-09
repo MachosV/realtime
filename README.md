@@ -12,7 +12,7 @@ Requirements
 
 Steps:
 
-$redis
+$redis-server
 
 $python manage.py collectstatic
 
