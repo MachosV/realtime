@@ -5,7 +5,6 @@ $( document ).ready(function() {
     socket.onmessage = function(e){
         try{document.getElementById("no_phones").remove();}
         catch(err){}
-        console.log("js:ok");
         var ul = document.getElementById("phone_list");
         var li = document.createElement("li");
         var a = document.createElement("a");

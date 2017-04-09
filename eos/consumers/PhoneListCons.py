@@ -1,7 +1,6 @@
 from channels import Group
 
 def subscribePhones(message):
-    print "CONSUMER: Web connection OK!"
     Group("phones").add(message.reply_channel)
     message.reply_channel.send({
         "accept": True, #needed for successful handshake
