@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title%}Dashboard{% endblock %}
+
+{% block content%}
+{% if not live_phones %}
+    <p>There are no live phones</p>
+{% else %}
+    {% for phone in live_phones %}
+        {{phone}}
+    {% endfor %}
+{% endif %}
+<br>
+<p>Logs</p>
+{% for log in logs %}
+{{log.field}}:{{log.value}} @ {{log.timestamp}}<br>
+{% endfor %}
+{% endblock %}
