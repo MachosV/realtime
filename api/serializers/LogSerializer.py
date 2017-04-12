@@ -5,6 +5,6 @@ class LogSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Log
-        fields = '__all__'
+        fields = ("field","value","timestamp")
 
 
