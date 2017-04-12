@@ -1,6 +1,6 @@
 from django.shortcuts import HttpResponse
 from django.views.generic.list import ListView
-from eos.models import LivePhone,LogOrdered
+from eos.models import LivePhone,LogDashboard
 
 class Dashboard(ListView):
     model = LivePhone
@@ -9,5 +9,5 @@ class Dashboard(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(Dashboard, self).get_context_data(**kwargs)
-        context['logs'] = LogOrdered.objects.all()
+        context['logs'] = LogDashboard.objects.all()
         return context

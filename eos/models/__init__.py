@@ -1,9 +1,9 @@
 from Phone import Phone
-from Log import Log,LogOrdered
+from Log import Log,LogDashboard
 from LivePhone import LivePhone
 
 all = [
     'Phone',
-    'Log'
+    'Log',
     'LivePhone',
     ]

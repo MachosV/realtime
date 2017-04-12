@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% block title%}Dashboard{% endblock %}
+{% load staticfiles %}
 
 {% block content%}
-{% if not live_phones %}
-    <p>There are no live phones</p>
-{% else %}
-    {% for phone in live_phones %}
-        {{phone}}
+<script src="{% static 'dashboard.js' %}"></script>
+<h1>Live phones</h1>
+<div id="phonediv">
+    <ul id="phone_list">
+    {% if live_phones %}
+        {% for phone in live_phones %}
+            <li id = {{phone.phone.imsi}}><a href="phone/{{phone.phone.imsi}}">{{phone}}</a></li>
+        {% endfor %}
+        {% endif %}
+    </ul>
+    {% if not live_phones %}
+        <p id="no_phones">No phones connected</p>
+    {% endif %}
+</div>
+<h1>Last 25 logs</h1>
+    {% for log in logs %}
+        {{log.field}}:{{log.value}} @ {{log.timestamp}}<br>
     {% endfor %}
-{% endif %}
-<br>
-<p>Logs</p>
-{% for log in logs %}
-{{log.field}}:{{log.value}} @ {{log.timestamp}}<br>
-{% endfor %}
 {% endblock %}

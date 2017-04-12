@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title%}API Guide{% endblock %}
+{% load staticfiles %}
+
+{% block content %}
+<h1>Links for API</h1>
+<ul>
+    <li>/api/phones<br><span>Returns list of phones</span></li>
+    <li>/api/phone_create<br><span>Create a phone. Not all fields are necessary</span></li>
+    <li>/api/phone_update<br><span>Update a phone. Not all fields are necessary</span></li>
+    <li>/api/logs/{imsi}<br><span>Get logs. Can retrieve multiple fields.<br>
+    /api/logs/testimsi?fields=kc,signal,operator.
+    </span></li>
+</ul>
+{% endblock %}

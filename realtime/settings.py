@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'eos',
     'api',
     'rest_framework',
+    'debug_toolbar'
 ]
 
 #CHANNEL_LAYERS = {
@@ -80,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'realtime.urls'
@@ -152,5 +154,7 @@ USE_L10N = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR + '/static/'
+STATIC_URL = BASE_DIR+'/static/'
+STATIC_ROOT = '/static/'
+
+INTERNAL_IPS=['127.0.0.1']

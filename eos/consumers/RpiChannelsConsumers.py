@@ -1,16 +1,17 @@
 from channels import Group
 import json
+from utils.PhoneConnected import phoneConnected,phoneDisconnected
 
 def rpiConnected(message):
     message.reply_channel.send({"accept": True})
     rpi = message.content['path'].replace("/","")
-    print "[*]Connected to:",rpi
     Group(rpi).add(message.reply_channel)
+    phoneConnected(message)
 
 def rpiDisconnected(message):
     rpi = message.content['path'].replace("/","")
-    print "[*]Disconnected from:", rpi
     Group(rpi).discard(message.reply_channel)
+    phoneDisconnected(message)
 
 def rpi2web(message):
     data = {}

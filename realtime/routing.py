@@ -21,8 +21,14 @@ rpi_channels = [
     route("websocket.receive",rpi2web)
 ]
 
+dashboard_channel = [
+    route("websocket.connect",subscribeDashboard),
+    route("websocket.disconnect",unsubscribeDashboard),
+]
+
 channel_routing = [
     include(phone_list, path = r"^/ws/phones/"),
     include(web_channels, path = r'^/ws/web/' ),
     include(rpi_channels, path = r'^/ws/rpi/'),
+    include(dashboard_channel,path = r'^/ws/dashboard'),
 ]
