@@ -1,8 +1,8 @@
-from PhoneListCons import unsubscribePhones,subscribePhones,notifyNewPhone
-from PhoneUpdateCons import subscribeSinglePhone,unsubscribeSinglePhone,updatePhone
-from PhoneStatus import phoneConnected,phoneDisconnected,sendCommand
+from PhoneListCons import unsubscribePhoneList,subscribePhoneList,notifyNewPhone
+from WebChannelsConsumers import subscribeWebChannel,unsubscribeWebChannel,updatePhone,web2rpi
+from RpiChannelsConsumers import rpiConnected,rpiDisconnected,rpi2web
 all = [
-    'unsubscribePhones','subscribePhones','notifyNewPhone',
-    'subscribeSinglePhone','unsubscribeSinglePhone','updatePhone',
-    'phoneConnected','phoneDisconnected','sendCommand'
+    'unsubscribePhoneList','subscribePhoneList','notifyNewPhone',
+    'subscribeSinglePhone','unsubscribeSinglePhone','updatePhone','web2rpi',
+    'rpiConnected','rpiDisconnected','rpi2web'
 ]

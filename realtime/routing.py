@@ -1,24 +1,28 @@
 from channels.routing import route,include
 from eos.consumers import *
 
-phone_list_routing = [
-    route("websocket.connect", subscribePhones),
-    route("websocket.disconnect", unsubscribePhones),
+#routing for phonelist
+phone_list = [
+    route("websocket.connect", subscribePhoneList),
+    route("websocket.disconnect", unsubscribePhoneList),
 ]
 
-phone_update_routing = [
-    route("websocket.connect", subscribeSinglePhone),
-    route("websocket.disconnect", unsubscribePhones),
-    route("websocket.receive",sendCommand),
+#routing web interface 2 rpi
+web_channels = [
+    route("websocket.connect", subscribeWebChannel),
+    route("websocket.disconnect", unsubscribeWebChannel),
+    route("websocket.receive",web2rpi),
 ]
 
-phone_status_routing = [
-    route("websocket.connect",phoneConnected),
-    route("websocket.disconnect",phoneDisconnected),
+#routing rpi to web interface
+rpi_channels = [
+    route("websocket.connect",rpiConnected),
+    route("websocket.disconnect",rpiDisconnected),
+    route("websocket.receive",rpi2web)
 ]
 
 channel_routing = [
-    include(phone_list_routing, path = r"^/ws/phone_sub/"),
-    include(phone_update_routing, path = r'^/ws/phone_update/' ),
-    include(phone_status_routing, path = r'^/ws/livephone/'),
+    include(phone_list, path = r"^/ws/phones/"),
+    include(web_channels, path = r'^/ws/web/' ),
+    include(rpi_channels, path = r'^/ws/rpi/'),
 ]

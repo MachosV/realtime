@@ -1,15 +1,15 @@
 from channels import Group
 
-def subscribePhones(message):
+def subscribePhoneList(message):
     Group("phones").add(message.reply_channel)
     message.reply_channel.send({
         "accept": True, #needed for successful handshake
     })
 
-def unsubscribePhones(message):
+def unsubscribePhoneList(message):
     Group("phones").discard(message.reply_channel)
 
-def notifyNewPhone(newPhone): #deployment comment, consumer receives message
+def notifyNewPhone(newPhone):
     Group("phones").send({
         "text":newPhone.get_self()
     })

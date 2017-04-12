@@ -1,7 +1,7 @@
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var socket;
 $( document ).ready(function() {
-    socket = new WebSocket(ws_scheme + '://' + window.location.host + "/ws/phone_sub/");
+    socket = new WebSocket(ws_scheme + '://' + window.location.host + "/ws/phones/");
     socket.onmessage = function(e){
         try{document.getElementById("no_phones").remove();}
         catch(err){}

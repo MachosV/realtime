@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block title %} Phone detail {% endblock %}
 {% block content %}
-<script src="{% static 'phone_detail_update.js' %}"></script>
+<script src="{% static 'singlePhone.js' %}"></script>
 {% if not phone %}
 <p>no phone</p>
 {% endif %}
@@ -12,4 +12,6 @@
     {% endfor %}
 <input type="text" id="command">
 <button type="button" id="commandBtn">Send</button>
+<span>Command result:</span>
+<span id="cmd-result"></span>
 {% endblock %}
