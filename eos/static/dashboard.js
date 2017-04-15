@@ -9,7 +9,6 @@ $( document ).ready(function() {
             handlePhone(response);
         }
         else if(response.type == 'log'){
-            console.log("received log")
             handleLog(response);
         }
         else{
