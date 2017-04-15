@@ -47,7 +47,6 @@ function handlePhone(response){
 }
 
 function handleLog(response){
-    console.log(response);
     var last = $('#logdiv .log-item:last-child');//last log selector, get it and remove it dramatically
     $('#logdiv').prepend("<span class='log-item'>"+response.imsi+"->"+response.field+":"+response.value+" @ "+dateFormat(new Date(response.timestamp), "mmm d, yyyy, HH:MM:ss")+"</span><br>");
     $(last).addClass('animated fadeOutDown').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function() {
