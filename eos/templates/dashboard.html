@@ -21,7 +21,7 @@
 <h1>Last 25 logs</h1>
     <div id="logdiv">
     {% for log in logs %}
-        <span class="log-item">{{log.field}}:{{log.value}} @ {{log.timestamp|date:'M d, o, H:i:s'}}<br></span>
+        <span class="log-item">{{log.imsi}}->{{log.field}}:{{log.value}} @ {{log.timestamp|date:'M d, o, H:i:s'}}<br></span>
     {% endfor %}
     </div>
 {% endblock %}

@@ -31,6 +31,7 @@ def new_phone(sender, instance, **kwargs):
 def new_log(sender, instance, **kwargs):
     data = LogSerializer(instance).data
     data['type'] = 'log'
+    data['imsi'] = instance.imsi
     notifyDashboard(json.dumps(data))
 
 
