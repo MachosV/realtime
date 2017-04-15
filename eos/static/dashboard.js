@@ -9,6 +9,7 @@ $( document ).ready(function() {
             handlePhone(response);
         }
         else if(response.type == 'log'){
+            console.log("received log")
             handleLog(response);
         }
         else{
@@ -47,5 +48,10 @@ function handlePhone(response){
 }
 
 function handleLog(response){
-    console.log("Handle log");
+    var last = $('#logdiv .log-item:last-child');//last log selector, get it and remove it dramatically
+    $('#logdiv').prepend("<span class='log-item'>"+response.field+":"+response.value+" @ "+dateFormat(new Date(response.timestamp), "mmmm d, yyyy, H:MM:ss")+"</span><br>");
+    $(last).addClass('animated fadeOutDown').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function() {
+          $(this).removeClass('animated fadeOutDown');
+          $(this).remove();
+        });
 }

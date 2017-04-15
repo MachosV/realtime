@@ -1,8 +1,9 @@
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from .models import Phone,Log
-from eos.consumers import notifyNewPhone,updatePhone
-import datetime
+from eos.consumers import notifyNewPhone,updatePhone,notifyDashboard
+import datetime,json
+from api.serializers import LogSerializer
 
 def logNewPhone(instance):
     fields = instance.__dict__
@@ -25,5 +26,11 @@ def new_phone(sender, instance, **kwargs):
     if instance._state.adding:
         notifyNewPhone(instance)
         logNewPhone(instance)
+
+@receiver(pre_save, sender = Log)
+def new_log(sender, instance, **kwargs):
+    data = LogSerializer(instance).data
+    data['type'] = 'log'
+    notifyDashboard(json.dumps(data))
 
 
