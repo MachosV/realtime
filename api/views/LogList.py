@@ -11,10 +11,21 @@ class LogList(ListAPIView):
 
     def get_queryset(self):
         self.queryset = []
-        fields = self.request.query_params.get('fields')
-        if fields:
-            fields = fields.split(",")
-            self.queryset = Log.objects.filter(imsi=self.kwargs['imsi']).filter(reduce(lambda x, y: x | y, [Q(field=value) for value in fields]))
-        else:
-            self.queryset = Log.objects.filter(imsi=self.kwargs['imsi'])
-        return self.queryset
+        if 'imsi' in self.kwargs:
+            return logs_imsi(self)
+        return paginated(self.request)
+
+
+def logs_imsi(data):
+    fields = data.request.query_params.get('fields')
+    if fields:
+        fields = fields.split(",")
+        queryset = Log.objects.filter(imsi=data.kwargs['imsi']).filter(
+            reduce(lambda x, y: x | y, [Q(field=value) for value in fields]))
+    else:
+        queryset = Log.objects.filter(imsi=data.kwargs['imsi'])
+    return queryset
+
+def paginated(request):
+    print request.GET["count"]
+    return Log.objects.all().order_by("-timestamp")
