@@ -27,5 +27,4 @@ def logs_imsi(data):
     return queryset
 
 def paginated(request):
-    print request.GET["count"]
     return Log.objects.all().order_by("-timestamp")
